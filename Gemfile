@@ -43,3 +43,24 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# custom gems
+group :development do
+  gem 'disable_assets_logger'
+  gem 'foreman'
+end
+
+# assets related
+gem 'jquery-turbolinks'
+gem 'bootstrap-sass', '~> 2.3.2.2'
+
+# forms
+gem "simple_form", "~> 3.0.0.rc"
+
+# pagination
+gem "kaminari"
+gem 'bootstrap-kaminari-views'
+
+# heroku
+gem 'rails_12factor', group: :production
+gem 'unicorn'
