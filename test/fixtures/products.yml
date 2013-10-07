@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  kind: MyString
+  height: 1
+  is_emergency_exit: false
+  is_openable: false
+
+two:
+  kind: MyString
+  height: 1
+  is_emergency_exit: false
+  is_openable: false

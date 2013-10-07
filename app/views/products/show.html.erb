@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Kind:</strong>
+    <%= @product.kind %>
+  </p>
+
+  <p>
+    <strong>Height:</strong>
+    <%= @product.height %>
+  </p>
+
+  <p>
+    <strong>Is emergency exit:</strong>
+    <%= @product.is_emergency_exit %>
+  </p>
+
+  <p>
+    <strong>Is openable:</strong>
+    <%= @product.is_openable %>
+  </p>
+
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+</div>

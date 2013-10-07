@@ -1,0 +1,15 @@
+<% flash_hash = flash.to_hash.except(:recaptcha_error) %>
+<% unless flash_hash.empty? %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <% flash_hash.each do |type, message| %>
+          <div class="alert <%= bootstrap_class_for(type) %> fade in">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
