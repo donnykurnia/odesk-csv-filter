@@ -1,4 +1,14 @@
 OdeskCsvFilter::Application.routes.draw do
+  resources :products do
+    collection do
+      get 'import_csv'
+      post 'review_csv'
+      post 'bulk_insert'
+    end
+  end
+
+  root 'products#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +49,7 @@ OdeskCsvFilter::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

@@ -1,0 +1,14 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :kind %>
+    <%= f.input :height %>
+    <%= f.input :is_emergency_exit, wrapper_html: { class: "checkbox" } %>
+    <%= f.input :is_openable, wrapper_html: { class: "checkbox" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
