@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= product_counter + 1 %>
+  </td>
+  <td>
+    <%= product.kind %>
+    <%= hidden_field_tag 'product[kind][]', product.kind %>
+  </td>
+  <td>
+    <%= product.height %>
+    <%= hidden_field_tag 'product[height][]', product.height %>
+  </td>
+  <td>
+    <%= product.is_emergency_exit ? 'True' : 'False' %>
+    <%= hidden_field_tag 'product[is_emergency_exit][]', product.is_emergency_exit %>
+  </td>
+  <td>
+    <%= product.is_openable ? 'True' : 'False' %>
+    <%= hidden_field_tag 'product[is_openable][]', product.is_openable %>
+  </td>
+</tr>

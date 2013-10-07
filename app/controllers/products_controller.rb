@@ -63,6 +63,30 @@ class ProductsController < ApplicationController
     end
   end
 
+  def import_csv
+    @csv_upload = CsvUpload.new
+  end
+
+  def review_csv
+    @csv_upload = CsvUpload.import(csv_params)
+
+    respond_to do |format|
+      if @csv_upload.valid?
+        format.html # review_csv.html.erb
+      else
+        format.html { render action: 'import_csv' }
+      end
+    end
+  end
+
+  def bulk_insert
+    @products = Product.bulk_insert(products_params)
+
+    respond_to do |format|
+      format.html { redirect_to products_url, notice: 'Products was successfully created.' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -72,5 +96,13 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:kind, :height, :is_emergency_exit, :is_openable)
+    end
+
+    def products_params
+      params.require(:product).permit({kind: []}, {height: []}, {is_emergency_exit: []}, {is_openable: []})
+    end
+
+    def csv_params
+      params.fetch(:csv_upload, {}).permit(:csv_file)
     end
 end
