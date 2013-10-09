@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
     @csv_upload = CsvUpload.import(csv_params)
 
     respond_to do |format|
-      if @csv_upload.errors.size == 0 && @csv_upload.valid?
+      if @csv_upload.errors.empty? && @csv_upload.valid?
         format.html # review_csv.html.erb
       else
         format.html { render action: 'import_csv' }
