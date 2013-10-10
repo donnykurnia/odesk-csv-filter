@@ -51,6 +51,9 @@ group :development do
   gem 'foreman'
 end
 
+# db related
+gem "squeel"
+
 # assets related
 gem 'jquery-turbolinks'
 gem 'bootstrap-sass', '~> 2.3.2.2'
