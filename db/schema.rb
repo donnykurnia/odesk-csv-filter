@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010223722) do
+ActiveRecord::Schema.define(version: 20131010231626) do
 
   create_table "products", force: true do |t|
     t.string   "kind"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20131010223722) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "sort_by"
+    t.string   "sort_direction"
   end
 
   add_index "searches", ["parent_id"], name: "index_searches_on_parent_id", using: :btree
