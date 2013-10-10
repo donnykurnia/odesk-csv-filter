@@ -57,6 +57,7 @@ gem 'bootstrap-sass', '~> 2.3.2.2'
 
 # forms
 gem "simple_form", "~> 3.0.0.rc"
+gem "nested_form"
 
 # pagination
 gem "kaminari"
