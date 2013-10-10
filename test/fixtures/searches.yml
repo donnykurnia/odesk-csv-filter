@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  field: MyString
+  pre_condition: MyString
+  comparison: MyString
+  value: MyString
+  connector: MyString
+  parent_id: 1
+
+two:
+  field: MyString
+  pre_condition: MyString
+  comparison: MyString
+  value: MyString
+  connector: MyString
+  parent_id: 1

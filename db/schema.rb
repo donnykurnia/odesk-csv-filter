@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007065614) do
+ActiveRecord::Schema.define(version: 20131010223722) do
 
   create_table "products", force: true do |t|
     t.string   "kind"
@@ -21,5 +21,30 @@ ActiveRecord::Schema.define(version: 20131007065614) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "search_results", force: true do |t|
+    t.integer  "search_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "search_results", ["product_id"], name: "index_search_results_on_product_id", using: :btree
+  add_index "search_results", ["search_id"], name: "index_search_results_on_search_id", using: :btree
+
+  create_table "searches", force: true do |t|
+    t.string   "field"
+    t.string   "pre_condition"
+    t.string   "comparison"
+    t.string   "value"
+    t.string   "connector"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "searches", ["parent_id"], name: "index_searches_on_parent_id", using: :btree
+
+  add_foreign_key "searches", "searches", :name => "searches_parent_id_fk", :column => "parent_id", :dependent => :delete
 
 end

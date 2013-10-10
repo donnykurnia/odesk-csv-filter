@@ -1,14 +1,8 @@
-class Search < OpenStruct
-  include ActiveModel::Validations
-  include ActiveModel::Conversion
-  extend  ActiveModel::Naming
-
-  def initialize(*args)
-    super
-  end
-
-  def persisted?
-    false
-  end
-
+class Search < ActiveRecord::Base
+  # associations
+  has_many :connections, class_name: "Search",
+                          foreign_key: "parent_id",
+                          dependent: :destroy
+  belongs_to :parent, class_name: "Search"
+  has_many :search_results
 end
