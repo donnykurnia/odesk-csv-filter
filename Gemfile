@@ -53,6 +53,8 @@ end
 
 # db related
 gem "squeel"
+gem "foreigner", "~> 1.4.2"
+gem 'immigrant'
 
 # assets related
 gem 'jquery-turbolinks'

@@ -44,11 +44,16 @@ GEM
     dotenv (0.9.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    foreigner (1.4.2)
+      activerecord (>= 3.0.0)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
     hike (1.2.3)
     i18n (0.6.5)
+    immigrant (0.1.5)
+      activerecord (>= 3.0)
+      foreigner (>= 1.2.1)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -149,7 +154,9 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.2)
   coffee-rails (~> 4.0.0)
   disable_assets_logger
+  foreigner (~> 1.4.2)
   foreman
+  immigrant
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
