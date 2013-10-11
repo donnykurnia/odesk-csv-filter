@@ -14,7 +14,7 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-development:
+development: &development
   adapter: postgresql
   encoding: unicode
   database: odesk-csv-filter_development
@@ -44,17 +44,10 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: postgresql
-  encoding: unicode
+  <<: *development
   database: odesk-csv-filter_test
-  pool: 5
   username: odesk-csv-filter
   password: odesk-csv-filter
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: odesk-csv-filter_production
-  pool: 5
-  username: odesk-csv-filter
-  password:
+  <<: *development
