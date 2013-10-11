@@ -4,7 +4,7 @@
   <div class="fields">
     <%= f.input_field :pre_condition, collection: ["NOT"], include_blank: true, class: 'pre_condition' %>
     <%= f.input_field :field, collection: Product.fields_option, prompt: 'Choose Field', class: 'field' %>
-    <%= f.input_field :comparison, collection: ["<", ">", "=", "!="], include_blank: false, class: 'comparison' %>
+    <%= f.input_field :comparison, collection: Product.comparison_arrays, include_blank: false, class: 'comparison' %>
     <%= f.input_field :value, class: 'value', placeholder: 'value' %>
   </div>
 

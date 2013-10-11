@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 
+  # validation
   validates :kind, presence: true
   validates :height, presence: true, numericality: { only_integer: true }
 
@@ -17,6 +18,14 @@ class Product < ActiveRecord::Base
 
   def self.fields_option
     [["Kind", "kind"], ["Height", "height"], ["Emergency Exit", "is_emergency_exit"], ["Openable", "is_openable"]]
+  end
+
+  def self.fields_option
+    [["Kind", "kind"], ["Height", "height"], ["Emergency Exit", "is_emergency_exit"], ["Openable", "is_openable"]]
+  end
+
+  def self.comparison_arrays
+    ["<", ">", "=", "!="]
   end
 
 end

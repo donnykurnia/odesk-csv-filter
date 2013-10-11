@@ -7,8 +7,16 @@ class Search < ActiveRecord::Base
   belongs_to :parent, class_name: "Search"
   has_many :search_results, dependent: :destroy
 
+  # scopes
   default_scope -> { order("id asc") }
   scope :main, -> { where(parent_id: nil) }
+
+  # validation
+  validates :field, presence: true, inclusion: { in: Product.column_names - ["id", "created_at", "updated_at"],
+    message: "%{value} is not a valid field name" }
+  validates :comparison, presence: true, inclusion: { in: Product.comparison_arrays,
+    message: "%{value} is not a valid comparison" }, if: Proc.new { |a| a.field.try(:match, /^is.*/).nil? }
+  validates :value, presence: true, if: Proc.new { |a| a.field.try(:match, /^is.*/).nil? }
 
   # methods
   def value_key
