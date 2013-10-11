@@ -34,29 +34,7 @@
     </div>
     <div class="span4">
       <p>Search</p>
-      <%= simple_nested_form_for(Search.new, html: { class: 'form-inline search-form' }) do |f| %>
-        <%= f.error_notification %>
-
-        <div class="form-inputs">
-          <%= f.input_field :pre_condition, collection: ["NOT"], include_blank: true, class: 'pre_condition' %>
-          <%= f.input_field :field, collection: ["Kind", "Height", "Emergency Exit", "Openable"], prompt: 'Choose Field', class: 'field' %>
-          <%= f.input_field :comparison, collection: ["<", ">", "=", "!="], include_blank: false, class: 'comparison' %>
-          <%= f.input_field :value, class: 'value', placeholder: 'value' %>
-        </div>
-        <div class="form-inputs" id="another_fields">
-          <%= f.simple_fields_for :connections %>
-        </div>
-        <p><%= f.link_to_add "Add another condition", :connections, data: { target: "#another_fields" } %></p>
-        <div class="form-inputs">
-          <%= f.input_field :sort_by, collection: ["Kind", "Height", "Emergency Exit", "Openable"], prompt: "Sort By" %>
-          <%= f.input_field :sort_direction, collection: ["Ascending", "Descending"], prompt: "direction" %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Search Product" %>
-        </div>
-      <% end %>
-
+      <%= render 'search_form' %>
     </div>
   </div>
   <br>

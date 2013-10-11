@@ -15,4 +15,8 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def self.fields_option
+    [["Kind", "kind"], ["Height", "height"], ["Emergency Exit", "is_emergency_exit"], ["Openable", "is_openable"]]
+  end
+
 end
