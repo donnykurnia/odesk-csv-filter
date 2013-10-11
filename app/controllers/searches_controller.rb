@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :destroy, :save_results, :saved_results]
 
   def index
-    @searches = Search.page(params[:page])
+    @searches = Search.main.page(params[:page])
   end
 
   def show

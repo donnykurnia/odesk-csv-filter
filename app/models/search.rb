@@ -8,6 +8,7 @@ class Search < ActiveRecord::Base
   has_many :search_results, dependent: :destroy
 
   default_scope -> { order("id asc") }
+  scope :main, -> { where(parent_id: nil) }
 
   # methods
   def value_key
