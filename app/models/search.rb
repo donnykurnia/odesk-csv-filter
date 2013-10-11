@@ -40,4 +40,8 @@ class Search < ActiveRecord::Base
     [all_condition_str, all_value_hash]
   end
 
+  def order_str
+    "#{self.sort_by} #{self.sort_direction}"
+  end
+
 end
