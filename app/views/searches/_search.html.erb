@@ -1,0 +1,7 @@
+<tr>
+  <td><%= search_counter + @searches.offset_value + 1 %></td>
+  <td><%= search.all_condition_title %></td>
+  <td><%= link_to 'Live Results', search %></td>
+  <td><%= link_to 'Saved Results', saved_results_search_path(search) %></td>
+  <td><%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

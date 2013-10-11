@@ -1,5 +1,10 @@
 OdeskCsvFilter::Application.routes.draw do
-  resources :searches, only: [:index, :show, :create, :destroy]
+  resources :searches, only: [:index, :show, :create, :destroy] do
+    member do
+      put 'save_results'
+      get 'saved_results'
+    end
+  end
   resources :products do
     collection do
       get 'import_csv'

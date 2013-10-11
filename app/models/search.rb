@@ -5,9 +5,10 @@ class Search < ActiveRecord::Base
                           dependent: :destroy
   accepts_nested_attributes_for :connections, allow_destroy: true
   belongs_to :parent, class_name: "Search"
-  has_many :search_results
+  has_many :search_results, dependent: :destroy
 
   default_scope -> { order("id asc") }
+  scope :main, -> { where(parent_id: nil) }
 
   # methods
   def value_key
@@ -62,6 +63,13 @@ class Search < ActiveRecord::Base
       result << " #{connection.connector} #{connection.condition_title}"
     end
     result
+  end
+
+  def save_results
+    self.search_results.clear
+    Product.where(self.condition_array).order(self.order_str).each do |product|
+      self.search_results << self.search_results.create(product_id: product.id)
+    end
   end
 
 end
