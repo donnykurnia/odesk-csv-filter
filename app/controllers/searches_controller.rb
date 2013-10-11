@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
   end
 
   def show
+    @products = Product.where(@search.condition_array).page(params[:page])
   end
 
   # POST /searches
@@ -43,6 +44,7 @@ class SearchesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
       params.require(:search).permit(:pre_condition, :field, :comparison, :value,
+                                      :sort_by, :sort_direction,
                                       connections_attributes: [
                                         :id, :_destroy,
                                         :connector,
