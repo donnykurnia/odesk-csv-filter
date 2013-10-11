@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
   end
 
   def show
-    @products = Product.where(@search.condition_array).page(params[:page])
+    @products = Product.where(@search.condition_array).order(@search.order_str).page(params[:page])
   end
 
   # POST /searches
