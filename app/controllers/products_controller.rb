@@ -4,9 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    search_params = params.fetch(:search, {}).permit!
-    @search_result = Product.search(search_params)
-    @products = @search_result.page(params[:page])
+    @products = Product.page(params[:page])
   end
 
   # GET /products/1
