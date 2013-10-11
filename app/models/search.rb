@@ -15,9 +15,11 @@ class Search < ActiveRecord::Base
   end
 
   def condition_str
-    str = "#{self.pre_condition} #{self.field}"
+    str = ""
+    str = "#{self.pre_condition} " unless self.pre_condition.blank?
+    str << self.field
     if self.field.match(/^is.*/).nil?
-      str += " #{self.comparison} :#{self.value_key}"
+      str << " #{self.comparison} :#{self.value_key}"
     end
     str
   end
@@ -34,7 +36,7 @@ class Search < ActiveRecord::Base
     all_condition_str = self.condition_str
     all_value_hash = self.value_hash
     connections.each do |connection|
-      all_condition_str += " #{connection.connector} #{connection.condition_str}"
+      all_condition_str << " #{connection.connector} #{connection.condition_str}"
       all_value_hash.merge!(connection.value_hash)
     end
     [all_condition_str, all_value_hash]
@@ -42,6 +44,24 @@ class Search < ActiveRecord::Base
 
   def order_str
     "#{self.sort_by} #{self.sort_direction}"
+  end
+
+  def condition_title
+    str = ""
+    str = "#{self.pre_condition} " unless self.pre_condition.blank?
+    str << self.field
+    if self.field.match(/^is.*/).nil?
+      str << " #{self.comparison} #{self.value}"
+    end
+    str
+  end
+
+  def all_condition_title
+    result = self.condition_title
+    connections.each do |connection|
+      result << " #{connection.connector} #{connection.condition_title}"
+    end
+    result
   end
 
 end
