@@ -6,12 +6,6 @@ class Product < ActiveRecord::Base
   # methods
 
   # class methods
-  def self.search(search_params)
-    products = all
-    # products = products.where("products.title like :search OR products.description like :search", { search: "%" + search_params + "%" }) unless search_params.blank?
-    products
-  end
-
   def self.bulk_insert(products_params)
     products_params[:kind].each_with_index do |kind, index|
       self.create(:kind => kind.strip,
