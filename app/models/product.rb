@@ -20,4 +20,12 @@ class Product < ActiveRecord::Base
     [["Kind", "kind"], ["Height", "height"], ["Emergency Exit", "is_emergency_exit"], ["Openable", "is_openable"]]
   end
 
+  def self.fields_option
+    [["Kind", "kind"], ["Height", "height"], ["Emergency Exit", "is_emergency_exit"], ["Openable", "is_openable"]]
+  end
+
+  def self.comparison_arrays
+    ["<", ">", "=", "!="]
+  end
+
 end
