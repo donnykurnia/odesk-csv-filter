@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :set_search, only: [:show, :destroy]
+  before_action :set_search, only: [:show, :destroy, :save_results, :saved_results]
 
   def index
     @searches = Search.page(params[:page])
@@ -33,6 +33,18 @@ class SearchesController < ApplicationController
       format.html { redirect_to searches_url }
       format.json { head :no_content }
     end
+  end
+
+  def save_results
+    @search.save_results
+    respond_to do |format|
+      format.html { redirect_to saved_results_search_path(@search) }
+      format.json { head :no_content }
+    end
+  end
+
+  def saved_results
+    @products = Product.where(id: @search.search_results.collect(&:product_id)).order(@search.order_str).page(params[:page])
   end
 
   private
