@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 
+  # validation
   validates :kind, presence: true
   validates :height, presence: true, numericality: { only_integer: true }
 
