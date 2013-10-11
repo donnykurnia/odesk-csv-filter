@@ -51,12 +51,18 @@ group :development do
   gem 'foreman'
 end
 
+# db related
+gem "squeel"
+gem "foreigner", "~> 1.4.2"
+gem 'immigrant'
+
 # assets related
 gem 'jquery-turbolinks'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 
 # forms
 gem "simple_form", "~> 3.0.0.rc"
+gem "nested_form"
 
 # pagination
 gem "kaminari"

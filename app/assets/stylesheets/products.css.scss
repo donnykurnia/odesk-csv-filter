@@ -1,3 +1,24 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-form {
+  select {
+    width: 150px;
+  }
+  .connector {
+    width: 100px;
+  }
+  .pre_condition {
+    width: 75px;
+  }
+  .field {
+    width: 170px;
+  }
+  .comparison {
+    width: 60px;
+  }
+  .value {
+    width: 300px;
+  }
+}

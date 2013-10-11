@@ -4,9 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    search_params = params.fetch(:search, {}).permit!
-    @search_result = Product.search(search_params)
-    @products = @search_result.page(params[:page])
+    @products = Product.page(params[:page])
   end
 
   # GET /products/1
@@ -71,7 +69,7 @@ class ProductsController < ApplicationController
     @csv_upload = CsvUpload.import(csv_params)
 
     respond_to do |format|
-      if @csv_upload.valid?
+      if @csv_upload.errors.empty? && @csv_upload.valid?
         format.html # review_csv.html.erb
       else
         format.html { render action: 'import_csv' }
